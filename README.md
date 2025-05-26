@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+### What this is:
+This is a silly little demo project to get up and running with 3 React components consuming data from a backend API. This was written in one sitting on a Monday evening.
+### Tool Stack:
+- Vite 6.0.11
+- React 19.1
+- Tailwindcss 4.1.7
+- daisyUI 5.0.37
+### Dependencies
+@tailwindcss/vite: ^4.1.7
+react: ^18.3.1
+react-dom: ^18.3.1
+tailwindcss: ^4.1.7
+### Dev Dependencies
+"@eslint/js": "^9.17.0",
+"@types/react": "^18.3.18",
+"@types/react-dom": "^18.3.5",
+"@vitejs/plugin-react": "^4.3.4",
+"daisyui": "^5.0.37",
+"eslint": "^9.17.0",
+"eslint-plugin-react-hooks": "^5.0.0",
+"eslint-plugin-react-refresh": "^0.4.16",
+"globals": "^15.14.0",
+"typescript": "~5.6.2",
+"typescript-eslint": "^8.18.2",
+"vite": "^6.0.5"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was bootstrapped from a preset to make setup quicker. The settings are left default.
+### Components
+- Header: This contains just a title.
+- Jokes: this contains the jokes obtained from the API and a button.
+- Footer: This contains a copyright notice.
+### CSS
+index.css: General purpose layout classes. 
+App.css: App specific custom-classes and overwrites.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Running this project
+- open a terminal in VS Code
+- type 'npm run dev'
+- the frontend will run on localhost port 1200
