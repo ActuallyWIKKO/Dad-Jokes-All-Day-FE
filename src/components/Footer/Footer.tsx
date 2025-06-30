@@ -1,8 +1,9 @@
 export const Footer: React.FC = () => {
   return (
-    <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+    <footer className="footer sm:footer-horizontal footer-center text-base-content">
     <aside>
-        <p>&copy; {new Date().getFullYear()} Made with &hearts; in Hamburg City</p>
+        <p className="footer-text">Made with <span className="heart-icon">&hearts;</span> in Hamburg City</p>
+        <a href="https://wikko.dev">WIKKO.DEV</a>
       </aside>
     </footer>
   );

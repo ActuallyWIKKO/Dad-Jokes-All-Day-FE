@@ -28,14 +28,14 @@ export const SectionOne: React.FC = () => {
   }, []);
 
   return (
-    <section className="bg-base-100">
+    <section>
       <div>
         <p className="joke">
           {" "}
-          {loading ? "Loading..." : joke?.joke || "No joke found."}
+          {loading ? "Loading..." : joke?.joke || "No jokes found. Is the backend running?"}
         </p>
-        <button className="btn" onClick={fetchJoke}>
-          Show a Dad Joke
+        <button className="joke-btn" onClick={fetchJoke}>
+          Dad Jokes Await
         </button>
       </div>
     </section>
