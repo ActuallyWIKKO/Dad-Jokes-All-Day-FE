@@ -22,6 +22,12 @@ section{
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 20%);
   padding: 35px;
   width: 350px;
+  transition: opacity 0.3s ease; 
+}
+// at joke: ease in to avoid flicker while reloading DOM
+// at joke.faded: adjusted opacity to avoid flicker while reloading DOM
+.joke.faded {
+  opacity: 0.5;
 }
 
 .joke-btn{

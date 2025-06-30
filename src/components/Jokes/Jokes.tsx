@@ -30,9 +30,8 @@ export const SectionOne: React.FC = () => {
   return (
     <section>
       <div>
-        <p className="joke">
-          {" "}
-          {loading ? "Loading..." : joke?.joke || "No jokes found. Is the backend running?"}
+       <p className={`joke ${loading ? "faded" : ""}`}>
+          {joke?.joke || "No jokes found. Is the backend running?"}
         </p>
         <button className="joke-btn" onClick={fetchJoke}>
           Dad Jokes Await
