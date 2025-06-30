@@ -6,7 +6,11 @@ type Joke = {
   joke: string;
 };
 
-export const SectionOne: React.FC = () => {
+interface SectionOneProps {
+  setHasFetchedJoke: (val: boolean) => void;
+}
+
+export const SectionOne: React.FC<SectionOneProps> = ({ setHasFetchedJoke }) => {
   const [joke, setJoke] = useState<Joke | null>(null);
   const [copySuccess, setCopySuccess] = useState<string>("");
 
@@ -14,6 +18,7 @@ export const SectionOne: React.FC = () => {
     try {
       const response = await axios.get<Joke>("http://localhost:1199/jokes/random");
       setJoke(response.data);
+      setHasFetchedJoke(true);
       setCopySuccess(""); 
     } catch (error) {
       console.error(error);
@@ -46,7 +51,7 @@ const copyJokeToClipboard = useCallback(async () => {
       }
     }
 
-    window.addEventListener("keydown", onKeyDown);
+  window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [copyJokeToClipboard]);
 
@@ -57,9 +62,6 @@ const copyJokeToClipboard = useCallback(async () => {
         <button className="joke-btn" onClick={fetchJoke}>
           Dad Jokes Await
         </button>
-        {/* <button className="joke-btn" onClick={copyJokeToClipboard} disabled={!joke}>
-          Copy Joke
-        </button> */}
         {copySuccess && <p style={{ color: "green" }}>{copySuccess}</p>}
       </div>
     </section>

@@ -34,11 +34,11 @@ section{
 .joke-btn{
   background: #29344b;
   color: #dddbf1;
-  padding: 30px 65px;
+  padding: 25px 80px;
   margin: 0 0 50px 0;
   border-radius: 50px;
   text-transform: uppercase;
-  font-size: 12pt;
+  font-size: 14pt;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 20%);
   
 }
@@ -49,8 +49,9 @@ section{
 
 .footer-text{
   color: #d1beb0;
-  font-size: 16pt;
-    line-height: 1.2;
+  font-size: 14pt;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .heart-icon{
