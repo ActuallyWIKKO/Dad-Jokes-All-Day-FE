@@ -58,6 +58,16 @@ section{
   color: red;
 }
 
+.copy-icon{
+   cursor: pointer;
+   fill: #dddbf1;
+   position: relative;
+   bottom: 250px;
+   left: 310px;
+   width: 24px;
+   height: 24px;
+}
+
 .help-menu-header{
   background: #7b6ef3;
   color: #dbf1dd;

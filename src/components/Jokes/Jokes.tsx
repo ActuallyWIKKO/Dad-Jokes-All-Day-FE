@@ -56,16 +56,38 @@ const copyJokeToClipboard = useCallback(async () => {
   }, [fetchJoke, copyJokeToClipboard]);
 
   return (
-     <section>
-           <div>
-        {joke && <><p className="joke fade-in">{joke.joke}</p> <button className="joke-btn" onClick={copyJokeToClipboard}>Beam to clipboard</button></>
-}
-         <div>{copySuccess && <p style={{ color: "#3d763c", padding: '0 0 25px 0' }}>{copySuccess}</p>}</div>
-        <button className="joke-btn" onClick={fetchJoke}>
-          Dad Jokes Await
-        </button>
-              </div>
-    </section>
+ <section>
+  <div>
+    {joke && (
+      <>
+        <p className="joke fade-in">{joke.joke}</p>
+        <svg
+          onClick={copyJokeToClipboard}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="2415 380 20 24"
+          width="24"
+          height="24"
+          className="copy-icon"
+        >
+          <path d="M2431,385.08599853515625L2425.9140625,380L2418,380C2416.34326171875,380,2415,381.3431396484375,2415,383L2415,400L2431,400ZM2417,398L2417,383C2417,382.4477233886719,2417.44775390625,382,2418,382L2425,382L2425,386L2429,386L2429,398ZM2435,389L2435,404L2420,404L2420,402L2433,402L2433,387Z" />
+        </svg>
+      </>
+    )}
+
+    <div>
+      {copySuccess && (
+        <p style={{ color: "#3d763c", padding: '0 0 25px 0' }}>
+          {copySuccess}
+        </p>
+      )}
+    </div>
+
+    <button className="joke-btn" onClick={fetchJoke}>
+      Dad Jokes Await
+    </button>
+  </div>
+</section>
+
     
   );
 };
