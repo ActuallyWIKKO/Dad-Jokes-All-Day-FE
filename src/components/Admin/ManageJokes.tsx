@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import EditJokes from "./EditJokes";
+import AddNewJokes from "./AddNewJokes";
 
 type Joke = {
   id: number;
@@ -11,15 +12,24 @@ export const ManageJokes: React.FC = () => {
   const [jokes, setJokes] = useState<Joke[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+   const [addingJoke, setAddingJoke] = useState<boolean>(false);
   const [editingJoke, setEditingJoke] = useState<Joke | null>(null);
-
-  const deleteJoke = async (id: number) => {
+ 
+  const handleCreate = async (createNewJoke: Joke) => {
+    try {
+      await axios.post(`http://localhost:1199/jokes`, createNewJoke)
+    } catch (error) {
+      console.error(error)
+      alert("Failed to add a new joke. :( Try again later.")
+    }
+  }
+  const handleDelete = async (id: number) => {
     try {
       await axios.delete(`http://localhost:1199/joke/${id}`);
       setJokes((previousJoke) => previousJoke.filter((joke) => joke.id !== id));
     } catch (error) {
       console.error(error);
-      alert("Failed to delete joke.");
+      alert("Failed to delete joke. :( Try again later.");
     }
   };
 
@@ -32,7 +42,7 @@ export const ManageJokes: React.FC = () => {
       setEditingJoke(null);
     } catch (error) {
       console.error(error);
-      alert("Failed to update joke.");
+      alert("Failed to update joke. :( Try again later.");
     }
   };
 
@@ -45,7 +55,7 @@ export const ManageJokes: React.FC = () => {
         setJokes(response.data);
       } catch (err) {
         console.error(err);
-        setError("Failed to fetch jokes.");
+        setError("Failed to fetch jokes. :( Try again later.");
       } finally {
         setLoading(false);
       }
@@ -61,8 +71,19 @@ export const ManageJokes: React.FC = () => {
       {error && <p className="text-red-500">{error}</p>}
 
       {!loading && !error && (
-        <ul className="space-y-4 w-[750px]">
-          <button className="admin-joke-btn">Add new Joke</button>
+        <ul className="space-y-4 md:w-[750px]">
+
+          <button className="admin-joke-btn" onClick={() => setAddingJoke(true)}>Add new Joke</button>
+          {addingJoke && (
+  <AddNewJokes
+    onSave={(newJoke) => {
+      handleCreate(newJoke);
+      setJokes((prev) => [...prev, newJoke]);
+      setAddingJoke(false);
+    }}
+    onCancel={() => setAddingJoke(false)}
+  />
+)}
           {jokes.map((joke, index) => (
             <li key={joke.id} className="admin-joke-list-item">
              
@@ -75,7 +96,7 @@ export const ManageJokes: React.FC = () => {
                   Edit Joke
                 </a>
                 <span> | </span>
-                <a onClick={() => deleteJoke(joke.id)}>
+                <a onClick={() => handleDelete(joke.id)}>
                   Delete Joke
                 </a>
               </p>
