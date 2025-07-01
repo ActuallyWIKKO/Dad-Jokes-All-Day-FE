@@ -9,6 +9,7 @@ export const Help_Menu: React.FC = () => {
           <p className="py-3 text-sm">[F8],[H] - Toggle Help Menu</p>
            <p className="py-3 text-sm">[J], [Space] - Get a new Dad Joke</p>
           <p className="py-3 text-sm">[C] - Copy Joke to the clipboard</p>
+          <p className="py-3 text-sm">For managing jokes try /admin</p>
           {/* <p className="py-3 text-sm">[M] - Toggle Light/Dark Mode</p>   */}
         </div>
       </section>

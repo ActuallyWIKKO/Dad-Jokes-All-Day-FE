@@ -14,16 +14,16 @@ export const SectionOne: React.FC<SectionOneProps> = ({ setHasFetchedJoke }) => 
   const [joke, setJoke] = useState<Joke | null>(null);
   const [copySuccess, setCopySuccess] = useState<string>("");
 
-  const fetchJoke = async () => {
-    try {
-      const response = await axios.get<Joke>("http://localhost:1199/jokes/random");
-      setJoke(response.data);
-      setHasFetchedJoke(true);
-      setCopySuccess(""); 
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const fetchJoke = useCallback(async () => {
+  try {
+    const response = await axios.get<Joke>("http://localhost:1199/jokes/random");
+    setJoke(response.data);
+    setHasFetchedJoke(true);
+    setCopySuccess("");
+  } catch (error) {
+    console.error(error);
+  }
+}, [setHasFetchedJoke]);
 
 const copyJokeToClipboard = useCallback(async () => {
     if (!joke) return;
@@ -53,7 +53,7 @@ const copyJokeToClipboard = useCallback(async () => {
 
   window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [copyJokeToClipboard]);
+  }, [fetchJoke, copyJokeToClipboard]);
 
   return (
     <section>
