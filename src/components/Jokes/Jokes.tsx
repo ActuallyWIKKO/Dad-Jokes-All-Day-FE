@@ -29,8 +29,8 @@ const copyJokeToClipboard = useCallback(async () => {
     if (!joke) return;
     try {
       await navigator.clipboard.writeText(joke.joke);
-      setCopySuccess("Copied!");
-      setTimeout(() => setCopySuccess(""), 2000);
+      setCopySuccess("Joke beamed to your clipboard!");
+      setTimeout(() => setCopySuccess(""), 5000);
     } catch (err) {
       console.error("Failed to copy!", err);
       setCopySuccess("Failed to copy");
@@ -56,14 +56,16 @@ const copyJokeToClipboard = useCallback(async () => {
   }, [fetchJoke, copyJokeToClipboard]);
 
   return (
-    <section>
-      <div>
-        {joke && <p className="joke fade-in">{joke.joke}</p>}
+     <section>
+           <div>
+        {joke && <><p className="joke fade-in">{joke.joke}</p> <button className="joke-btn" onClick={copyJokeToClipboard}>Beam to clipboard</button></>
+}
+         <div>{copySuccess && <p style={{ color: "#3d763c", padding: '0 0 25px 0' }}>{copySuccess}</p>}</div>
         <button className="joke-btn" onClick={fetchJoke}>
           Dad Jokes Await
         </button>
-        {copySuccess && <p style={{ color: "green" }}>{copySuccess}</p>}
-      </div>
+              </div>
     </section>
+    
   );
 };
