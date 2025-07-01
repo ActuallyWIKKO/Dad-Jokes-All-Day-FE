@@ -36,7 +36,7 @@ return (
       {error && <p className="text-red-500">{error}</p>}
 
       {!loading && !error && (
-        <ul className="space-y-4">
+        <ul className="space-y-4 w-[750px]">
             <button className="admin-joke-btn">Add new Joke</button>
           {jokes.map((joke) => (
             <li key={joke.id} className="admin-joke-list-item">
